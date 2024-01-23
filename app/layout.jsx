@@ -6,7 +6,7 @@ export const metadata = {
     description: 'Discover & share awsome GPT promts'
 }
 
-const RootLayout = () => {
+const RootLayout = ({ children }) => {
   return (
     <html lang='en'>
       <body>
@@ -15,7 +15,7 @@ const RootLayout = () => {
         </div>
 
         <main className="app">
-          {children}
+          { children }
         </main>
       </body>
     </html>
