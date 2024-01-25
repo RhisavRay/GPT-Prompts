@@ -9,6 +9,8 @@ const Home = () => {
       <p className="desc text-center">
         Master Prompter is an open-source AI promting tool for the modern world to discover, create and share creative prompts
       </p>
+
+      {/* Feed Component */}
     </section>
   )
 }
