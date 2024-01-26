@@ -17,6 +17,10 @@ const Nav = () => {
         className="object-contain"/>
         <p className="logo_text">Master Prompter</p>
       </Link>
+
+
+      {/* Mobile Navigation */}
+      <div className="sm:flex hidden"></div>
     </nav>
   )
 }
