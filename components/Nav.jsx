@@ -31,9 +31,12 @@ const Nav = () => {
       </Link>
 
 
-      {/* Mobile Navigation */}
+      {/* Desktop Navigation */}
       <div className="sm:flex hidden">
         {isUserLoggedIn ? (
+          
+          // If user is logged in
+
           <div className="flex gap-3 md:gap-5">
             <Link href="/create-prompt" className="black_btn">
               Create Post
@@ -53,9 +56,23 @@ const Nav = () => {
             </Link>
           </div>
         ) : (
-          <></>
+
+          // If user isn't logged in yet
+
+          <>
+            {providers && Object.values(providers).map((provider) => (
+              <button
+                type="button"
+                key={provider.name}
+                onClick={() => signIn(provider.id)}
+                className="black_btn"></button>
+            ))}
+          </>
         )}
       </div>
+
+      {/* Mobile Navigation */}
+
     </nav>
   )
 }
