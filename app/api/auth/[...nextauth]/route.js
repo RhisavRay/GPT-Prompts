@@ -7,5 +7,13 @@ const handler = NextAuth({
             clientId: "",
             clientSecret: ""
         })
-    ]
+    ],
+    async session({ session }){
+
+    },
+    async session({ profile }){
+
+    }
 })
+
+export { handler as GET, handler as POST }
