@@ -24,3 +24,13 @@ const userSchema = newSchema({
         type: String
     }
 })
+
+// The "models" object is provided by the mongoose library and stores all the registered models.
+// If a model named "User" already exists in the "models" object, it asigns the existing model to the "User" variable.
+// This prevents redefinition of models and existing model is reused
+// If a model named "User" does not exist in the "models" object, the "model" function from mongoose is called to create a new model.
+// The newly created model is then assigned to te "User" variable.
+
+const User = models.User || model("User", userSchema);
+
+export default User
