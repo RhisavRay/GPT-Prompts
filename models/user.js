@@ -13,4 +13,14 @@ const userSchema = newSchema({
     },
 
     // Now from here, all other needed  attributes are going to follow the same pattern as above.
+
+    userName: {
+        type: String,
+        required: [true, "User name is required!"],
+        match: [/^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/, "Username invalid, it should contain 8-20 alphanumeric letters and be unique!"]
+    },
+
+    image: {
+        type: String
+    }
 })
