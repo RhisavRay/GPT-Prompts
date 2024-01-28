@@ -22,12 +22,7 @@ const Nav = () => {
   return (
     <nav className="flex-between w-full mb-16 pt-3">
       <Link href="/" className="flex gap-2 flex-center">
-        <Image
-        src="/assets/images/logo.svg"
-        alt="Master Prompter Logo"
-        width={30}
-        height={30}
-        className="object-contain"/>
+        <Image src="/assets/images/logo.svg" alt="Master Prompter Logo" width={30} height={30} className="object-contain"/>
         <p className="logo_text">Master Prompter</p>
       </Link>
 
@@ -48,12 +43,7 @@ const Nav = () => {
             </button>
 
             <Link href="/profile">
-              <Image
-              alt="Profile Pic"
-              src="/assets/images/logo.svg"
-              width={37}
-              height={37}
-              className="rounded-full"/>
+              <Image alt="Profile Pic" src="/assets/images/logo.svg" width={37} height={37} className="rounded-full"/>
             </Link>
           </div>
         ) : (
@@ -62,11 +52,9 @@ const Nav = () => {
 
           <>
             {providers && Object.values(providers).map((provider) => (
-              <button
-                type="button"
-                key={provider.name}
-                onClick={() => signIn(provider.id)}
-                className="black_btn"></button>
+              <button type="button" key={provider.name} onClick={() => signIn(provider.id)} className="black_btn">
+                  Sign in
+                </button>
             ))}
           </>
         )}
@@ -79,25 +67,37 @@ const Nav = () => {
           // If user is logged in
 
           <div className="flex">
-            <Image
-              alt="Profile Pic"
-              src="/assets/images/logo.svg"
-              width={37}
-              height={37}
-              className="rounded-full"
-              onClick={() => {setToggleDropdown((prev) => !prev)}}/>
+            <Image alt="Profile Pic" src="/assets/images/logo.svg" width={37} height={37} className="rounded-full" onClick={() => {setToggleDropdown((prev) => !prev)}}/>
+
+            {toggleDropdown && (
+              <div className="dropdown">
+                <Link href="/profile" className="dropdown_link" onClick={() => setToggleDropdown(false)}>
+                  My Profile
+                </Link>
+
+                <Link href="/create-prompt" className="dropdown_link" onClick={() => setToggleDropdown(false)}>
+                  Create new prompt
+                </Link>
+
+                <button type="button" className="mt-5 w-full black_btn" onClick={() => {
+                  setToggleDropdown(false)
+                  signOut()
+                }}>
+                  Sign Out
+                </button>
+              </div>
+            )}
           </div>
+
         ) : (
 
-          // If user is logged in
+          // If user is not logged in
 
           <>
             {providers && Object.values(providers).map((provider) => (
-              <button
-                type="button"
-                key={provider.name}
-                onClick={() => signIn(provider.id)}
-                className="black_btn"></button>
+              <button type="button" key={provider.name} onClick={() => signIn(provider.id)} className="black_btn">
+                  Sign in
+                </button>
             ))}
           </>
         )}
