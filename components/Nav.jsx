@@ -45,7 +45,7 @@ const Nav = () => {
             </button>
 
             <Link href="/profile">
-              <Image alt="Profile Pic" src="/assets/images/logo.svg" width={37} height={37} className="rounded-full"/>
+              <Image alt="Profile Pic" src={ session?.user.image } width={37} height={37} className="rounded-full"/>
             </Link>
           </div>
         ) : (
@@ -69,7 +69,7 @@ const Nav = () => {
           // If user is logged in
 
           <div className="flex">
-            <Image alt="Profile Pic" src="/assets/images/logo.svg" width={37} height={37} className="rounded-full" onClick={() => {setToggleDropdown((prev) => !prev)}}/>
+            <Image alt="Profile Pic" src={ session?.user.image } width={37} height={37} className="rounded-full" onClick={() => {setToggleDropdown((prev) => !prev)}}/>
 
             {toggleDropdown && (
               <div className="dropdown">
