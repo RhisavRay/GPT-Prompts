@@ -2,7 +2,7 @@ import { Schema, model, models } from "mongoose"
 
 // To create a new schema, the "newSchema" keyword is used
 
-const userSchema = newSchema({
+const userSchema = new Schema({
     
     // Now here, one by one all atributes  of our User will be added to this schema.
 
