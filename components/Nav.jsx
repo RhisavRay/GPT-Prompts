@@ -6,17 +6,17 @@ import { useState, useEffect } from "react"
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react'
 
 const Nav = () => {
-  const isUserLoggedIn = true;
+  const { data: session } = useSession()
 
   const [providers, setProviders] = useState(null);
   const [toggleDropdown, setToggleDropdown] = useState(false);
 
   useEffect(() =>{
-    const setProviders = async () => {
+    const setUpProviders = async () => {
       const response = await getProviders()
       setProviders(response)
     }
-    setProviders();
+    setUpProviders();
   }, [])
 
   return (
@@ -26,16 +26,18 @@ const Nav = () => {
         <p className="logo_text">Master Prompter</p>
       </Link>
 
+{/* { alert(session?.user) } */}
+{/* { alert(providers) } */}
 
       {/* Desktop Navigation */}
       <div className="sm:flex hidden">
-        {isUserLoggedIn ? (
+        {session?.user ? (
           
           // If user is logged in
 
           <div className="flex gap-3 md:gap-5">
             <Link href="/create-prompt" className="black_btn">
-              Create Post
+              Create new prompt
             </Link>
 
             <button type="button" onClick={signOut} className="outline_btn">
@@ -62,7 +64,7 @@ const Nav = () => {
 
       {/* Mobile Navigation */}
       <div className="sm:hidden flex relative">
-        {isUserLoggedIn ? (
+        {session?.user ? (
 
           // If user is logged in
 
